@@ -1,0 +1,41 @@
+<nav class="min-w-full bg-white border-b fixed top-0 z-10" data-controller= "header">
+  <div class="flex w-full justify-between items-center px-4 py-3 my-0.5" >
+    <div class="flex items-center">
+      <div class="mr-24">
+        <a  class="flex" href="">
+          <img class="h-8 w-8 mr-3" src="/assets/logo.svg" alt="Logo">
+          <span class="text-2xl font-semibold self-center white-space-nowrap"></span>
+        </a>
+      </div>
+      <div class="search-bar bg-gray-50  border-solid border border-gray-300 rounded-lg focus-within:ring-2 focus-within:ring-primary-600 ">
+        <form action="" method="get">
+          <div class="flex">
+            <label for="topbar-search" class="sr-only">Search</label>
+            <span class="pl-2">
+              <svg class="w-5 h-full items-center text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
+              </svg>
+            </span>
+            <input type="text" id="topbar-search" class="w-80 border-0 focus:ring-0 bg-transparent focus:outline-none" value="" placeholder="Search">
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="relative"> 
+      <div class="flex justify-center">
+        <div class="flex justify-center mr-5 max-w-full items-center gap-2">
+          <% if !user_signed_in? %>
+            <%= link_to 'sign up', new_user_registration_path, class: "rounded-lg  bg-blue-700 text-white px-5 py-2.5 font-semibold text-sm hover:bg-blue-800 flex items-center" %>
+            <%= link_to 'log in', new_user_session_path, class: "rounded-lg  bg-blue-700 text-white px-5 py-2.5 font-semibold text-sm hover:bg-blue-800 flex items-center"%>
+          <% else %>
+            <%= link_to current_user.email, edit_user_registration_path, data: { "turbo-method": :patch },class: "" %>
+            <%= link_to "log out", destroy_user_session_path, data: { "turbo-method": :delete }, class: "rounded-lg  bg-blue-700 text-white px-5 py-2.5 font-semibold text-sm hover:bg-blue-800 flex items-center" %>
+          <% end %>
+        </div>
+        <button class="w-8 mr-2 h-8 focus-within:ring-4 focus:ring-gray-300 rounded-full">
+          <img class="w-8 mr-2 h-8 rounded-full object-cover" src="/assets/profile.jpeg" alt="Logo">
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
