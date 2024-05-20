@@ -38,5 +38,5 @@
 !/app/assets/builds/.keep
 
 config/credentials.yml.enc
-config/database.yml
+# config/database.yml
 
